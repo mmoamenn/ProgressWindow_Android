@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">progresswindow</string>
+    <string name="null_configuration_error">ProgressWindowConfiguration can not be null</string>
+</resources>
