@@ -24,6 +24,7 @@ public class ProgressWindow {
     private WindowManager windowManager;
     private WindowManager.LayoutParams layoutParams;
     private View progressLayout;
+    private boolean isAttached ;
 
     /**
      * Private constructor to single-tone class
@@ -66,6 +67,18 @@ public class ProgressWindow {
         windowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
         windowManager.getDefaultDisplay().getMetrics(metrics);
         progressLayout = LayoutInflater.from(mContext).inflate(R.layout.view_progress_window, null);
+
+        progressLayout.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            @Override
+            public void onViewAttachedToWindow(View v) {
+                isAttached = true ;
+            }
+
+            @Override
+            public void onViewDetachedFromWindow(View v) {
+                isAttached = false ;
+            }
+        });
 
         mainProgress = progressLayout.findViewById(R.id.pb_main_progress);
         mainProgress.getIndeterminateDrawable().setColorFilter(Color.WHITE,
@@ -113,7 +126,9 @@ public class ProgressWindow {
      * Function to hide progress
      */
     public void hideProgress() {
-        windowManager.removeViewImmediate(progressLayout);
+        if(isAttached){
+            windowManager.removeViewImmediate(progressLayout);
+        }
     }
 
 
