@@ -65,5 +65,5 @@ Step 2. Add the dependency
         super.onPause();
         hideProgress();
     }
-}
+
 
