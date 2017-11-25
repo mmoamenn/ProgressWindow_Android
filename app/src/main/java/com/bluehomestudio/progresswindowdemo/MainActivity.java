@@ -9,24 +9,19 @@ import android.widget.ProgressBar;
 import com.bluehomestudio.progresswindow.ProgressWindow;
 import com.bluehomestudio.progresswindow.ProgressWindowConfiguration;
 
-public class MainActivity extends AppCompatActivity {
-    private  ProgressWindow progressWindow ;
+public class MainActivity extends BaseActivity {
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        progressWindow = ProgressWindow.getInstance(this);
-        ProgressWindowConfiguration progressWindowConfiguration = new ProgressWindowConfiguration();
-        progressWindowConfiguration.backgroundColor = Color.TRANSPARENT ;
-        progressWindowConfiguration.progressColor = Color.WHITE ;
-        progressWindow.setConfiguration(progressWindowConfiguration);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                progressWindow.showProgress();
+                showProgress();
             }
         } , 1000) ;
 
@@ -34,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                progressWindow.hideProgress();
+                hideProgress();
             }
         } , 8000) ;
 
