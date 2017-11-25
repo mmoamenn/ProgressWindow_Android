@@ -2,6 +2,9 @@
 
 A library to show progress in the toast level above any view or layout in your application.
 
+**Samples :**
+
+![Progress Image](https://github.com/mmoamenn/ProgressWindow_Android/blob/master/example/example.gif)
 
 **Installation**
 
