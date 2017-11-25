@@ -9,7 +9,7 @@ import android.widget.ProgressBar;
 import com.bluehomestudio.progresswindow.ProgressWindow;
 import com.bluehomestudio.progresswindow.ProgressWindowConfiguration;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
 
     @Override
@@ -18,11 +18,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                ProgressWindowApplication.getInstance().showProgress();
+                showProgress();
             }
         } , 1000) ;
 
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                ProgressWindowApplication.getInstance().hideProgress();
+                hideProgress();
             }
         } , 8000) ;
 

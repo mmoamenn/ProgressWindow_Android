@@ -1,7 +1,9 @@
 package com.bluehomestudio.progresswindowdemo;
 
-import android.app.Application;
 import android.graphics.Color;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 
 import com.bluehomestudio.progresswindow.ProgressWindow;
 import com.bluehomestudio.progresswindow.ProgressWindowConfiguration;
@@ -10,21 +12,14 @@ import com.bluehomestudio.progresswindow.ProgressWindowConfiguration;
  * Created by mohamedmoamen on 11/25/17.
  */
 
-public class ProgressWindowApplication extends Application {
+public class BaseActivity extends AppCompatActivity {
     private ProgressWindow progressWindow ;
-    private static ProgressWindowApplication instance  ;
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-
-        instance = this ;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         progressConfigurations();
-    }
-
-    public static ProgressWindowApplication getInstance(){
-        return instance ;
     }
 
     /**
@@ -52,4 +47,10 @@ public class ProgressWindowApplication extends Application {
         progressWindow.hideProgress();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        hideProgress();
+    }
 }
